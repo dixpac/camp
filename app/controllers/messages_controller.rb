@@ -27,16 +27,10 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
+    @recording = @bucket.record new_message
 
     respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
-      else
-        format.html { render :new }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to bucket_message_url(@bucket, @recording), notice: 'Message was successfully created.' }
     end
   end
 
@@ -71,7 +65,7 @@ class MessagesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def message_params
-      params.require(:message).permit(:subject, :content)
+    def new_message
+      Message.new params.require(:message).permit(:subject, :content)
     end
 end
