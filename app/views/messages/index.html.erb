@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.subject %></td>
+        <td><%= message.content %></td>
+        <td><%= link_to 'Show', bucket_message_url(@bucket, message.recording) %></td>
+        <td><%= link_to 'Edit', "#" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', "#" %>
