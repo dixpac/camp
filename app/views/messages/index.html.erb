@@ -17,7 +17,7 @@
         <td><%= message.subject %></td>
         <td><%= message.content %></td>
         <td><%= link_to 'Show', bucket_message_url(@bucket, message.recording) %></td>
-        <td><%= link_to 'Edit', "#" %></td>
+        <td><%= link_to 'Edit', edit_bucket_message_url(@bucket, message.recording) %></td>
       </tr>
     <% end %>
   </tbody>

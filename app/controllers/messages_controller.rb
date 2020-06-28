@@ -2,8 +2,6 @@ class MessagesController < ApplicationController
   include BucketScoped
   include SetRecordable
 
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
-
   # GET /messages
   # GET /messages.json
   def index
@@ -37,14 +35,10 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json
   def update
+    @recording.update! recordable: new_message
+
     respond_to do |format|
-      if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { render :show, status: :ok, location: @message }
-      else
-        format.html { render :edit }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to bucket_message_url(@bucket, @recording), notice: 'Message was successfully updated.' }
     end
   end
 
@@ -59,11 +53,6 @@ class MessagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @message = Message.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def new_message
       Message.new params.require(:message).permit(:subject, :content)
