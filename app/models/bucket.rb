@@ -3,10 +3,15 @@ class Bucket < ApplicationRecord
   belongs_to :bucketable, polymorphic: true
   has_many :recordings
 
-  def record(recordable, **options)
+
+  def record(recordable, parent:, **options)
     recordable.save!
 
-    options.merge!(recordable: recordable)
+    options.merge!(recordable: recordable, parent: parent)
     recordings.create!(options)
+  end
+
+  def messages
+    recordings.where(recordable_type: "Message")
   end
 end

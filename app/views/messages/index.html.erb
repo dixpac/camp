@@ -14,10 +14,10 @@
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= message.subject %></td>
-        <td><%= message.content %></td>
-        <td><%= link_to 'Show', bucket_message_url(@bucket, message.recording) %></td>
-        <td><%= link_to 'Edit', edit_bucket_message_url(@bucket, message.recording) %></td>
+        <td><%= message.recordable.subject %></td>
+        <td><%= message.recordable.content %></td>
+        <td><%= link_to 'Show', bucket_message_url(@bucket, message) %></td>
+        <td><%= link_to 'Edit', edit_bucket_message_url(@bucket, message) %></td>
       </tr>
     <% end %>
   </tbody>
