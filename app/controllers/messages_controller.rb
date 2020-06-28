@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @comments = @recording.children.comments
   end
 
   # GET /messages/new

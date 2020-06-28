@@ -1,11 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @recordable.subject %>
-</p>
+<section style="border: 1px solid; padding: 10px;">
+  <%= tag.h1 @recordable.subject %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @recordable.content %>
-</p>
+  <div>
+    <%= @recordable.content %>
+  </div>
+</section>
+
+<h3>Comments</h3>
+
+<section>
+  <% @comments.each do |comment| %>
+    <article style="border: 1px solid; padding: 10px;">
+      <p>Created at <%= comment.created_at %></p>
+      <%= comment.comment.content %>
+    </article>
+  <% end %>
+
+  <article style="border: 1px solid; padding: 10px;">
+    <%= render "comments/new", parent: @recording, comment: Comment.new %>
+  </article>
+</section>
+
+
