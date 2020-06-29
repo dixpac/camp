@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Only allow a list of trusted parameters through.
     def new_comment
       Comment.new params.require(:comment).permit(:content)
     end
