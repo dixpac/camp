@@ -1,0 +1,17 @@
+<article class="card card--project card--project-topic">
+  <section class="card__slider">
+    <div class="card__slide card__slide-1">
+      <%= link_to project, class: "card__link" do %>
+        <div class="card__content">
+          <section>
+            <div class="card__filterable-content">
+              <h2 class="card__title flush">
+                <%= project.title %>
+              </h2>
+            </div>
+          </section>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</article>

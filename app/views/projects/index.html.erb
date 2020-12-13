@@ -1,19 +1,18 @@
-<h1>Projects</h1>
+<div class="panel filterable-projects">
+  <section class="project-index__section project-index__section--projects">
+    <header class="centered">
+      <h3 class="project-index__header break break--on-background push--top push_half--bottom">
+        <span>Projects</span>
+      </h3>
+      <aside class="project-index__toolbar project-index__toolbar--new hide-from-clients">
+        <%= link_to "+ New", new_project_url, class: "options-menu__expansion-toggle btn btn--small" %>
+      </aside>
+    </header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= link_to 'Show', project %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="card-grid--projects">
+      <span class="cards--unbookmarked">
+        <%= render @projects %>
+      </span>
+    </div>
+  </section>
+</div>
