@@ -1,3 +1,10 @@
-<h1><%= @project.title%></h1>
+<div class="panel panel--project">
+  <header class="project-header project-header--for-home centered u-position-context">
+    <div class="project-header__details">
+      <h1 class="project-header__name--overview">
+        <span class="project-header__name-text"><%= @project.title %></span>
+      </h1>
+    </div>
+  </header>
+</div>
 
-<%= link_to "Messages", bucket_messages_url(@project.bucket) %>
