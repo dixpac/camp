@@ -4,7 +4,7 @@ class Bucket < ApplicationRecord
   has_many :recordings
 
 
-  def record(recordable, parent:, **options)
+  def record(recordable, parent: nil, **options)
     recordable.save!
 
     options.merge!(recordable: recordable, parent: parent)
