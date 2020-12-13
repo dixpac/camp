@@ -1,27 +1,17 @@
-<%= form_with(model: message, url: bucket_message_url(@bucket, message.recording), local: true) do |form| %>
-  <% if message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+<%= form_with(model: message, url: bucket_messages_url(@bucket)) do |form| %>
+  <article class="recordable document-style-editor flush--bottom autosaved__notice-container drop_zoned">
+    <h1 class="document-style-editor__title message__subject flush--top push_quarter--bottom">
+      <%= form.text_field :subject, placeholder: "Type a title...", class: "input input--full-width input--borderless input--title" %>
+    </h1>
 
-      <ul>
-        <% message.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <section class="content">
+      <%= form.text_area :content, class: "body medium formatted_content" %>
+    </section>
+
+  </article>
+  <footer class="message-composition__footer">
+    <div class="submit-buttons submit-buttons--perma push--bottom">
+      <%= form.submit "Post ths message", class: "btn btn--primary" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :subject %>
-    <%= form.text_field :subject %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  </footer>
 <% end %>
