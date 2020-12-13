@@ -1,26 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel--perma">
+  <article class="message">
+    <header class="message__header">
+      <h1 class="message__subject flush--top push_quarter--bottom">
+        <%= @recordable.subject %>
+      </h1>
 
-<section style="border: 1px solid; padding: 10px;">
-  <%= tag.h1 @recordable.subject %>
+      <div class="message__attribution">
+        <figure class="message__avatar">
+          <%= image_tag "avatar-placeholder.gif", class: "avatar message__avatar-image" %>
+        </figure>
+        <div class="message__meta">
+          John Doe
 
-  <div>
-    <%= @recordable.content %>
-  </div>
-</section>
+          <div class="message__date u-hide-on-template">
+            <time datetime="2020-07-08T13:55:45Z" data-local="time-or-date" title="July 8, 2020 at 3:55pm CEST">Jul 8</time>
+            <span class="metadata__divider">·</span>
+            No one was notified.
+          </div>
+        </div>
+      </div>
+    </header>
 
-<h3>Comments</h3>
-
-<section>
-  <% @comments.each do |comment| %>
-    <article style="border: 1px solid; padding: 10px;">
-      <p>Created at <%= comment.created_at %></p>
-      <%= comment.comment.content %>
-    </article>
-  <% end %>
-
-  <article style="border: 1px solid; padding: 10px;">
-    <%= render "comments/new", parent: @recording, comment: Comment.new %>
+    <section class="push--ends">
+      <div class="formatted_content">
+        <%= @recordable.content %>
+      </div>
+    </section>
   </article>
-</section>
 
+  <h2 class="thread__headline break break--thick break--flush-left">
+    <span>
+      <span>
+        Comments
+      </span>
+    </span>
+  </h2>
 
+  <section class="thread thread--comments">
+    <div class="thread__entries">
+      <% @comments.each do |comment| %>
+        <article class="thread-entry">
+          <header class="thread-entry__header">
+            <%= image_tag "avatar-placeholder.gif", class: "avatar thread-entry__avatar" %>
+            <span class="thread-entry__author"><strong>Jane Doe</strong></span>
+            <span class="thread-entry__options">
+            <span class="action-sheet action-sheet--for-thread-entry thread-entry__menu u-position-context u-hide-on-phone">
+              <span class="thread-entry__time metadata">
+                <time datetime="2020-10-15T09:26:58Z" data-local="time-or-date" title="October 15, 2020 at 11:26am CEST">Oct 15</time>
+              </span>
+            </span>
+          </span>
+          </header>
+          <div class="thread-entry__content formatted_content">
+            <%= comment.comment.content %>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </section>
+
+</div>

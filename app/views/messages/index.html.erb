@@ -3,7 +3,7 @@
     <header class="perma__header push--bottom">
       <h1 class="perma__title perma__title--toolbar">Message Board</h1>
       <label class="perma__new">
-        <%= link_to "+ New message", new_bucket_message_url(@bucket), class: "btn btn--small btn--primary" %>
+        <%= link_to "+ New message", "#", class: "btn btn--small btn--primary" %>
       </label>
     </header>
 
@@ -16,7 +16,7 @@
                 <%= image_tag "avatar-placeholder.gif", class: "avatar" %>
               </td>
               <td class="messages-table__what">
-                <%= link_to do %>
+                <%= link_to recordable_path(message) do %>
                   <%= tag.strong message.recordable.subject, class: "messages-table__subject" %>
                   <span class="messages-table__overflow">
                     <span class="txt--uncolor">
