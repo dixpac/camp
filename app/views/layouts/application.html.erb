@@ -9,7 +9,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="show-standard-announcement">
+    <main clas="loading__hide  u-hide-focus">
+      <%= yield %>
+    </main>
   </body>
 </html>
